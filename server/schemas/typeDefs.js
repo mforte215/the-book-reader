@@ -17,10 +17,23 @@ type Book {
   title: String
 }
 
-  type Query {
-    users: [User]
-    user(username: String!): User
-  }
+type Auth {
+  token: ID!
+  user: User
+}
+
+type Query {
+  users: [User]
+  user(username: String!): User
+}
+
+type Mutation {
+  addUser(username: String!, email: String!, password: String!): Auth
+  login(email: String!, password: String!): Auth
+  saveBook(authors: [String], description: String, title: String, bookId: String, image: String, link: String): Auth
+}
+
+
 
 
 `;
